@@ -2,6 +2,8 @@
 
 Repositório temporário(ou não).
 
+// Favor deixar o git organizado para melhor visualização de todos :) \\
+
 Temas:
 1.. Segmento de comércio;
 2.. Sistemas de aviação;
