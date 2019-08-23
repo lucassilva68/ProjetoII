@@ -6,8 +6,7 @@ Repositório temporário(ou não).
 
 Temas:
 1.. Segmento de comércio;
-2.. Sistemas de aviação;
-3.. Sistema em Hospital;
+2.. Sistema de hospital;
 
 -/-
 
