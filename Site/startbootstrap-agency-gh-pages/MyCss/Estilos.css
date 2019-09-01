@@ -1,4 +1,4 @@
-/* Color */
+/* Página principal */
 
 .color-green{
     color: green;
@@ -14,4 +14,9 @@
     font-size: 1.25rem;
     line-height: inherit;
     white-space: nowrap;
+}
+
+
+.color-button{
+background-color: green!important;
 }
