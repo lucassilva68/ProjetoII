@@ -16,7 +16,19 @@
     white-space: nowrap;
 }
 
+/* Botoes */
 
 .color-button{
 background-color: green!important;
 }
+
+/* Servicos */
+.color-service-botton{
+    color: black !important;
+}
+
+/* Sobre nos */
+
+.color-botton{
+      background-color: #008000 !important;
+  }
