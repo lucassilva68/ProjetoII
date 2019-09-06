@@ -35,7 +35,6 @@
 
     
     <!-- Navbar Search -->
-    
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
@@ -91,7 +90,6 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <canvas id="doughnutChart"></canvas>
     <ul class="sidebar navbar-nav">
       <li class="nav-item">
         <a class="nav-link" href="index.html">
@@ -242,23 +240,3 @@
 </body>
 
 </html>
-
-<script>
-function (){
-  var ctxD = document.getElementById("doughnutChart").getContext('2d');
-var myLineChart = new Chart(ctxD, {
-  type: 'doughnut',
-  data: {
-    labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
-    datasets: [{
-      data: [300, 50, 100, 40, 120],
-      backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
-      hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
-    }]
-  },
-  options: {
-    responsive: true
-  }
-});
-}
-</script>
