@@ -14,7 +14,7 @@ import java.util.Random;
  */
 public class projetoPi extends javax.swing.JFrame {
     Random sorteador = new Random();
-    Integer cliques = 0;
+    
 
     /**
      * Creates new form projetoPi
@@ -136,20 +136,52 @@ public class projetoPi extends javax.swing.JFrame {
     }//GEN-LAST:event_cbSistemaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        pbCpu.setValue (sorteador.nextInt(100));
-       porcent.setText(sorteador.nextInt(100) + "%");
        
-        pbDisco.setValue(sorteador.nextInt(100));
-        jlPorcent.setText(sorteador.nextInt(100) + "%");
+        Integer random = Integer.valueOf(sorteador.nextInt(100));
+        Integer random1 = Integer.valueOf(sorteador.nextInt(100));
+        Integer random2 = Integer.valueOf(sorteador.nextInt(100));
+        Integer rnd = random * 0;
+        
+        pbCpu.setValue (random);
+       porcent.setText(random + "%");
+       if(random  <60){
+       porcent.setForeground(Color.GREEN);}
+       else if (random < 85){
+               porcent.setForeground(Color.YELLOW);
+               }
+        else {
+       porcent.setForeground(Color.RED);
+       }
+       
+         pbMemoria.setValue(random1);
+        jlPorcent.setText(random1 + "%");
+        if(random1  <60){
+       jlPorcent.setForeground(Color.GREEN);}
+       else if (random1 < 85){
+               jlPorcent.setForeground(Color.YELLOW);
+               }
+        else {
+       jlPorcent.setForeground(Color.RED);
+       }
                 
-        pbMemoria.setValue(sorteador.nextInt(100));
-         jlPorcent2.setText(sorteador.nextInt(100) + "%");
+        pbDisco.setValue(random2);
+         jlPorcent2.setText(random2 + "%");
+         if(random2  <60){
+       jlPorcent2.setForeground(Color.GREEN);}
+       else if (random2 < 85){
+               jlPorcent2.setForeground(Color.YELLOW);
+               }
+        else {
+       jlPorcent2.setForeground(Color.RED);
+       }
+         
          
         if (cbSistema.isSelected()){
             cbSistema.setForeground(Color.GREEN);
         }else {
             cbSistema.setForeground(Color.red);
         }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
