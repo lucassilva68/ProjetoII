@@ -1,5 +1,8 @@
 # ProjetoII
 
+NÃO ESQUECE DE DAR GIT PULL ANTES DE SUBIR ALGUMA COISA POR FAVOR
+c:
+
 Repositório temporário(ou não).
 
 // Favor deixar o git organizado para melhor visualização de todos :) \\
