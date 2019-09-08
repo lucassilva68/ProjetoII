@@ -40,6 +40,7 @@ background-color: green!important;
   /* Contate-nos */
     .img-bkd-contact{
         background-image:url(../img/network-support-data-center-2.jpg)!important;
+        background-size: 100%;
     }
     .bkd-form-control{
         background-color: rgba(255, 255, 255, 0.4);
