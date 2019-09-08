@@ -30,5 +30,27 @@ background-color: green!important;
 /* Sobre nos */
 
 .color-botton{
-      background-color: #008000 !important;
+      background-color: rgba(255, 255, 255, 0.9) !important;
   }
+  .color-botton-end{
+      background-color: green!important;
+  }
+
+
+  /* Contate-nos */
+    .img-bkd-contact{
+        background-image:url(../img/network-support-data-center-2.jpg)!important;
+    }
+    .bkd-form-control{
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+    .text-color-muted{
+        color: rgba(255, 255, 255, 0.5);
+    }
+  /* Header */
+.img-bkd{
+    background-image:url(../img/noc.jpeg)!important;
+}
+.text-header-color{
+    text-shadow: 0.1em 0.1em 0.15em #0014ff; 
+}
