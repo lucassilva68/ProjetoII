@@ -5,6 +5,7 @@
  */
 package com.mycompany.full.sight.oshi;
 
+import oshi.PlatformEnum;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 import oshi.hardware.GlobalMemory;
@@ -61,5 +62,13 @@ public class MonitoramentoFS {
                 FormatUtil.formatHertz(cpu));
         
         return mostrarFrequencia;
+    }
+    
+    public String verSO(PlatformEnum SO){
+        
+        String mostrarSO = String.format("Sistema operacional: %s",
+                si.getCurrentPlatformEnum());
+
+        return mostrarSO;
     }
 }

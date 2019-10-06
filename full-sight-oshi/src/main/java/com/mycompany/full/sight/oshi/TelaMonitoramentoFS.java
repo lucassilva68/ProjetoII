@@ -5,6 +5,8 @@
  */
 package com.mycompany.full.sight.oshi;
 
+import oshi.PlatformEnum;
+
 /**
  *
  * @author Aluno
@@ -27,6 +29,7 @@ public class TelaMonitoramentoFS extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane2 = new javax.swing.JTabbedPane();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         lbMemoriaDisponivel = new javax.swing.JLabel();
@@ -35,6 +38,7 @@ public class TelaMonitoramentoFS extends javax.swing.JFrame {
         lbSO = new javax.swing.JLabel();
         lbFrequenciaCPU = new javax.swing.JLabel();
         lbMemoriaUtilizada = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,9 +70,7 @@ public class TelaMonitoramentoFS extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lbFrequenciaCPU)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lbFrequenciaCPU)
                             .addComponent(lbMemoriaUtilizada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
@@ -105,6 +107,19 @@ public class TelaMonitoramentoFS extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Computador", jPanel2);
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 399, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 272, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Processos", jPanel1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,6 +147,9 @@ public class TelaMonitoramentoFS extends javax.swing.JFrame {
         
         lbFrequenciaCPU.setText(tela.verUsoCPU
             (tela.hal.getProcessor()));
+        
+        lbSO.setText(tela.verSO
+            (PlatformEnum.LINUX));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -171,8 +189,10 @@ public class TelaMonitoramentoFS extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JLabel lbFrequenciaCPU;
     private javax.swing.JLabel lbMemoriaDisponivel;
     private javax.swing.JLabel lbMemoriaTotal;
