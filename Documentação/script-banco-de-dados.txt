@@ -1,0 +1,48 @@
+
+create table computadores
+(idComp int primary key not null identity,
+numeroSerie int not null,
+memoria int not null,
+CPU int not null,
+disco int not null,
+rede int not null);
+
+create table servidores 
+(idServidores int primary key not null,
+numeroSerie int not null,
+memoria int not null, 
+CPU int not null,
+disco int not null,
+rede int not null);
+
+create table usuario
+(idUsuario int primary key identity,
+nome varchar(30),
+sobrenome varchar(30),
+senha varchar(30),
+telefone int,
+cargo varchar(40),
+email varchar(200),
+    constraint ck_usuario_email01 check (email like '[a-z,0-9,_,-]%@[a-z,0-9,_,-]%.[a-z]%'), -- exige formato: [letras-numeros-underline-traço] + [qualquer coisa] + [@] + [letras-numeros-underline-traço] + [qualquer coisa] + [.] + [letras] + qualquer coisa
+    constraint ck_usuario_email02 check (email not like '%[^a-z0-9@._-]%'), -- impede caracteres que não sejam: a-z 0-9 @ . _ -
+    constraint ck_usuario_email03 check (email not like '%@%@%'), -- impede dois @
+    constraint ck_usuario_email04 check (email not like '%.@%'), -- impede .@
+    constraint ck_usuario_email05 check (email not like '%..%'), -- impede ..
+    constraint ck_usuario_email06 check (email not like '%.') -- impede terminar com .
+);
+
+create table relatorio
+(idRelatorio int primary key identity,
+CONSTRAINT fkUsuario FOREIGN KEY (idRelatorio)
+        REFERENCES usuario (idUsuario),
+CONSTRAINT fkComputadores FOREIGN KEY (idRelatorio)
+        REFERENCES computadores (idComp),
+CONSTRAINT fkServidores FOREIGN KEY (idRelatorio)
+        REFERENCES servidores(idServidores),
+        dateTempo datetime);        
+ 
+ create table login
+ (idLogin int primary key identity,
+ CONSTRAINT fkUsu FOREIGN KEY (idLogin)
+        REFERENCES usuario (idUsuario)
+    );
