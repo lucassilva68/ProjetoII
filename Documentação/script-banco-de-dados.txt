@@ -1,6 +1,5 @@
-
 create table computadores
-(idComp int primary key not null identity,
+(idComp int primary key identity (1,1),
 numeroSerie int not null,
 memoria int not null,
 CPU int not null,
@@ -8,7 +7,7 @@ disco int not null,
 rede int not null);
 
 create table servidores 
-(idServidores int primary key not null,
+(idServidores int primary key identity(100,1),
 numeroSerie int not null,
 memoria int not null, 
 CPU int not null,
@@ -16,7 +15,7 @@ disco int not null,
 rede int not null);
 
 create table usuario
-(idUsuario int primary key identity,
+(idUsuario int primary key identity(200,1),
 nome varchar(30),
 sobrenome varchar(30),
 senha varchar(30),
@@ -32,7 +31,7 @@ email varchar(200),
 );
 
 create table relatorio
-(idRelatorio int primary key identity,
+(idRelatorio int primary key identity(300,1),
 CONSTRAINT fkUsuario FOREIGN KEY (idRelatorio)
         REFERENCES usuario (idUsuario),
 CONSTRAINT fkComputadores FOREIGN KEY (idRelatorio)
@@ -42,7 +41,7 @@ CONSTRAINT fkServidores FOREIGN KEY (idRelatorio)
         dateTempo datetime);        
  
  create table login
- (idLogin int primary key identity,
+ (idLogin int primary key identity(400,1),
  CONSTRAINT fkUsu FOREIGN KEY (idLogin)
         REFERENCES usuario (idUsuario)
     );
