@@ -14,61 +14,104 @@ import oshi.software.os.OperatingSystem;
 import oshi.util.FormatUtil;
 
 public class MonitoramentoFS {
-       
+
     SystemInfo si = new SystemInfo();
     OperatingSystem os = si.getOperatingSystem();
     HardwareAbstractionLayer hal = si.getHardware();
-    
-    public String verMemoriaDisponivel(GlobalMemory memoria){
-        
+
+    public Integer verMemoriaPb() {
+        long memoriaDisponivel = hal.getMemory().getAvailable();
+        Integer teste = (int) memoriaDisponivel;
+
+        return teste;
+    }
+
+    public Integer verMemoriaUsadaPb() {
+        long memoriaUsada = hal.getMemory().getTotal() - hal.getMemory().getAvailable();
+        Integer teste = (int) memoriaUsada;
+
+        return teste;
+    }
+
+    public String verMemoriaDisponivel(GlobalMemory memoria) {
+
         long disponivel = memoria.getAvailable();
-        
+
         String mostrarMemoria = String.format(
                 "Memória Disponível: %s",
                 FormatUtil.formatBytes(disponivel));
-        
+
         return mostrarMemoria;
-        
     }
-    
-    public String verMemoriaTotal(GlobalMemory memoria){
-        
+
+    public String verMemoriaTotal(GlobalMemory memoria) {
+
         long total = memoria.getTotal();
-        
+
         String mostrarMemoria = String.format(
                 "Memória total: %s",
                 FormatUtil.formatBytes(total));
-        
+
         return mostrarMemoria;
     }
-    
-    
-    
-    public String verMemoriaUsada(GlobalMemory memoria){
-        
+
+    public String verMemoriaUsada(GlobalMemory memoria) {
+
         long memoriaUsada = memoria.getTotal() - memoria.getAvailable();
-        
+
         String mostrarMemoriaUsada = String.format("Memória Utilizada: %s",
                 FormatUtil.formatBytes(memoriaUsada));
-        
+
         return mostrarMemoriaUsada;
     }
-    
-    public String verUsoCPU(CentralProcessor processador){
-        
+
+    public String verUsoCPU(CentralProcessor processador) {
+
         long cpu = hal.getProcessor().getVendorFreq();
 
         String mostrarFrequencia = String.format("Frequência Total da CPU: %s",
                 FormatUtil.formatHertz(cpu));
-        
+
         return mostrarFrequencia;
     }
-    
-    public String verSO(PlatformEnum SO){
-        
+
+    public String verSO(PlatformEnum SO) {
+
         String mostrarSO = String.format("Sistema operacional: %s",
                 si.getCurrentPlatformEnum());
 
         return mostrarSO;
+    }
+
+    public String verThreads() {
+
+        String mostrarThreads = String.format("Quantidade de Threads: %s",
+                os.getThreadCount());
+
+        return mostrarThreads;
+    }
+
+    public String verProcessador() {
+
+        String mostrarModelo = String.format("Modelo do Processador: %s",
+                hal.getProcessor());
+
+        return mostrarModelo;
+    }
+
+    public String verPortasLogicas() {
+
+        String mostrarPortas = String.format("Quantidade de portas lógicas: %s",
+                hal.getProcessor().getLogicalProcessorCount());
+
+        return mostrarPortas;
+    }
+
+    public String verQtdProcessos() {
+
+        String mostrarQtdProcessos = String.format("Quantidade de Processos: %s",
+                os.getProcessCount());
+
+        return mostrarQtdProcessos;
     }
 }
