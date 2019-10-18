@@ -9,6 +9,7 @@ import oshi.PlatformEnum;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 import oshi.hardware.GlobalMemory;
+import oshi.hardware.HWDiskStore;
 import oshi.hardware.HardwareAbstractionLayer;
 import oshi.software.os.OperatingSystem;
 import oshi.util.FormatUtil;
@@ -18,7 +19,17 @@ public class MonitoramentoFS {
     SystemInfo si = new SystemInfo();
     OperatingSystem os = si.getOperatingSystem();
     HardwareAbstractionLayer hal = si.getHardware();
+    
+    public String verSO(PlatformEnum SO) {
 
+        String mostrarSO = String.format("Sistema operacional: %s",
+                si.getCurrentPlatformEnum());
+
+        return mostrarSO;
+    }
+    
+    //CÓDIGO DA MEMORIA
+    /* MEMORIA PRA PROGRESS BAR
     public Integer verMemoriaPb() {
         long memoriaDisponivel = hal.getMemory().getAvailable();
         Integer teste = (int) memoriaDisponivel;
@@ -32,6 +43,7 @@ public class MonitoramentoFS {
 
         return teste;
     }
+    */
 
     public String verMemoriaDisponivel(GlobalMemory memoria) {
 
@@ -40,17 +52,6 @@ public class MonitoramentoFS {
         String mostrarMemoria = String.format(
                 "Memória Disponível: %s",
                 FormatUtil.formatBytes(disponivel));
-
-        return mostrarMemoria;
-    }
-
-    public String verMemoriaTotal(GlobalMemory memoria) {
-
-        long total = memoria.getTotal();
-
-        String mostrarMemoria = String.format(
-                "Memória total: %s",
-                FormatUtil.formatBytes(total));
 
         return mostrarMemoria;
     }
@@ -64,7 +65,20 @@ public class MonitoramentoFS {
 
         return mostrarMemoriaUsada;
     }
+    
+    public String verMemoriaTotal(GlobalMemory memoria) {
 
+        long total = memoria.getTotal();
+
+        String mostrarMemoria = String.format(
+                "Memória total: %s",
+                FormatUtil.formatBytes(total));
+
+        return mostrarMemoria;
+    }
+
+    //CÓDIGO DA CPU
+    
     public String verUsoCPU(CentralProcessor processador) {
 
         long cpu = hal.getProcessor().getVendorFreq();
@@ -73,14 +87,6 @@ public class MonitoramentoFS {
                 FormatUtil.formatHertz(cpu));
 
         return mostrarFrequencia;
-    }
-
-    public String verSO(PlatformEnum SO) {
-
-        String mostrarSO = String.format("Sistema operacional: %s",
-                si.getCurrentPlatformEnum());
-
-        return mostrarSO;
     }
 
     public String verThreads() {
@@ -113,5 +119,24 @@ public class MonitoramentoFS {
                 os.getProcessCount());
 
         return mostrarQtdProcessos;
+    }
+    
+    //CÓDIGO DISCO
+    
+    public String verUsoDisco(){
+        
+        HWDiskStore[] disco = hal.getDiskStores();
+        
+        String mostrarUsoDisco = String.format("Uso do Disco: %s",disco );
+        
+        return mostrarUsoDisco;
+    }
+    
+    public String verDiscoTeste(){
+        
+        String mostrarDisco = String.format("teste disco: %s",os.getProcess(0)
+                .getBytesRead());
+        
+        return mostrarDisco;
     }
 }

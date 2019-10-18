@@ -44,6 +44,8 @@ public class TelaMonitoramentoFS extends javax.swing.JFrame {
         pbMemoriaUtilizada = new javax.swing.JProgressBar();
         pbMemoriaDisponivel = new javax.swing.JProgressBar();
         pDisco = new javax.swing.JPanel();
+        lbUsoDisco = new javax.swing.JLabel();
+        lbTeste = new javax.swing.JLabel();
         pRede = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -168,15 +170,29 @@ public class TelaMonitoramentoFS extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("RAM", pRam);
 
+        lbUsoDisco.setText("Uso do Disco:");
+
+        lbTeste.setText("teste");
+
         javax.swing.GroupLayout pDiscoLayout = new javax.swing.GroupLayout(pDisco);
         pDisco.setLayout(pDiscoLayout);
         pDiscoLayout.setHorizontalGroup(
             pDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 399, Short.MAX_VALUE)
+            .addGroup(pDiscoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbUsoDisco)
+                    .addComponent(lbTeste))
+                .addContainerGap(324, Short.MAX_VALUE))
         );
         pDiscoLayout.setVerticalGroup(
             pDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 255, Short.MAX_VALUE)
+            .addGroup(pDiscoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbUsoDisco)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbTeste)
+                .addContainerGap(205, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("DISCO", pDisco);
@@ -209,17 +225,21 @@ public class TelaMonitoramentoFS extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        
+        //Labels da Memória
+        /*
         pbMemoriaUtilizada.setValue(tela.verMemoriaUsadaPb());
 
         pbMemoriaDisponivel.setValue(tela.verMemoriaPb());
-        
+        */
         lbMemoriaUtilizada.setText(tela.verMemoriaUsada(tela.hal.getMemory()));
 
         lbMemoriaDisponivel.setText(tela.verMemoriaDisponivel(tela.hal.getMemory()));
 
         lbMemoriaTotal.setText(tela.verMemoriaTotal(tela.hal.getMemory()));
 
+        
+        //Labels do CPU
         lbFrequenciaCPU.setText(tela.verUsoCPU(tela.hal.getProcessor()));
 
         lbSO.setText(tela.verSO(PlatformEnum.LINUX));
@@ -231,6 +251,12 @@ public class TelaMonitoramentoFS extends javax.swing.JFrame {
         lbPortasLogicas.setText(tela.verPortasLogicas());
 
         lbPortasLogicas1.setText(tela.verQtdProcessos());
+        
+        
+        //Labels do Disco
+        lbUsoDisco.setText(tela.verUsoDisco());
+        
+        lbTeste.setText(tela.verDiscoTeste());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -279,7 +305,9 @@ public class TelaMonitoramentoFS extends javax.swing.JFrame {
     private javax.swing.JLabel lbPortasLogicas;
     private javax.swing.JLabel lbPortasLogicas1;
     private javax.swing.JLabel lbSO;
+    private javax.swing.JLabel lbTeste;
     private javax.swing.JLabel lbThreads;
+    private javax.swing.JLabel lbUsoDisco;
     private javax.swing.JPanel pCpu;
     private javax.swing.JPanel pDisco;
     private javax.swing.JPanel pRam;
