@@ -253,7 +253,7 @@
                           <Component id="lbUsoDisco" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lbTeste" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="324" max="32767" attributes="0"/>
+                      <EmptySpace pref="323" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -272,12 +272,12 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="lbUsoDisco">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Uso do Disco:"/>
+                <Property name="text" type="java.lang.String" value="Espa&#xe7;o livre: "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lbTeste">
               <Properties>
-                <Property name="text" type="java.lang.String" value="teste"/>
+                <Property name="text" type="java.lang.String" value="Espa&#xe7;o total: "/>
               </Properties>
             </Component>
           </SubComponents>

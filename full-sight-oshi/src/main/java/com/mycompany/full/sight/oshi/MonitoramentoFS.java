@@ -9,17 +9,17 @@ import oshi.PlatformEnum;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 import oshi.hardware.GlobalMemory;
-import oshi.hardware.HWDiskStore;
 import oshi.hardware.HardwareAbstractionLayer;
 import oshi.software.os.OperatingSystem;
 import oshi.util.FormatUtil;
+import java.io.File;
 
 public class MonitoramentoFS {
 
     SystemInfo si = new SystemInfo();
     OperatingSystem os = si.getOperatingSystem();
     HardwareAbstractionLayer hal = si.getHardware();
-    
+
     public String verSO(PlatformEnum SO) {
 
         String mostrarSO = String.format("Sistema operacional: %s",
@@ -27,7 +27,7 @@ public class MonitoramentoFS {
 
         return mostrarSO;
     }
-    
+
     //CÓDIGO DA MEMORIA
     /* MEMORIA PRA PROGRESS BAR
     public Integer verMemoriaPb() {
@@ -43,8 +43,7 @@ public class MonitoramentoFS {
 
         return teste;
     }
-    */
-
+     */
     public String verMemoriaDisponivel(GlobalMemory memoria) {
 
         long disponivel = memoria.getAvailable();
@@ -65,7 +64,7 @@ public class MonitoramentoFS {
 
         return mostrarMemoriaUsada;
     }
-    
+
     public String verMemoriaTotal(GlobalMemory memoria) {
 
         long total = memoria.getTotal();
@@ -78,7 +77,6 @@ public class MonitoramentoFS {
     }
 
     //CÓDIGO DA CPU
-    
     public String verUsoCPU(CentralProcessor processador) {
 
         long cpu = hal.getProcessor().getVendorFreq();
@@ -120,23 +118,25 @@ public class MonitoramentoFS {
 
         return mostrarQtdProcessos;
     }
-    
+
     //CÓDIGO DISCO
-    
-    public String verUsoDisco(){
-        
-        HWDiskStore[] disco = hal.getDiskStores();
-        
-        String mostrarUsoDisco = String.format("Uso do Disco: %s",disco );
-        
-        return mostrarUsoDisco;
+    public String verEspacoLivre() {
+
+        long livre = new File("C:").getFreeSpace();
+
+        String mostrarEspacoLivre = String.format("Espaço livre: %s", livre 
+                / 1073741824 + " GB");
+
+        return mostrarEspacoLivre;
     }
-    
-    public String verDiscoTeste(){
-        
-        String mostrarDisco = String.format("teste disco: %s",os.getProcess(0)
-                .getBytesRead());
-        
+
+    public String verEspacoTotal() {
+
+        long total = new File("C:").getTotalSpace();
+
+        String mostrarDisco = String.format("Espaço total: %s", total 
+                / 1073741824 + " GB");
+
         return mostrarDisco;
     }
 }

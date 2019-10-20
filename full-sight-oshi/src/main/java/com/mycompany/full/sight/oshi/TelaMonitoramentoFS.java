@@ -170,9 +170,9 @@ public class TelaMonitoramentoFS extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("RAM", pRam);
 
-        lbUsoDisco.setText("Uso do Disco:");
+        lbUsoDisco.setText("Espaço livre: ");
 
-        lbTeste.setText("teste");
+        lbTeste.setText("Espaço total: ");
 
         javax.swing.GroupLayout pDiscoLayout = new javax.swing.GroupLayout(pDisco);
         pDisco.setLayout(pDiscoLayout);
@@ -183,7 +183,7 @@ public class TelaMonitoramentoFS extends javax.swing.JFrame {
                 .addGroup(pDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbUsoDisco)
                     .addComponent(lbTeste))
-                .addContainerGap(324, Short.MAX_VALUE))
+                .addContainerGap(323, Short.MAX_VALUE))
         );
         pDiscoLayout.setVerticalGroup(
             pDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,9 +254,9 @@ public class TelaMonitoramentoFS extends javax.swing.JFrame {
         
         
         //Labels do Disco
-        lbUsoDisco.setText(tela.verUsoDisco());
+        lbUsoDisco.setText(tela.verEspacoLivre());
         
-        lbTeste.setText(tela.verDiscoTeste());
+        lbTeste.setText(tela.verEspacoTotal());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
