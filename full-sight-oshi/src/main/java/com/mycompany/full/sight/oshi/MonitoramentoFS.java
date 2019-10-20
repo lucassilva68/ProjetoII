@@ -5,14 +5,19 @@
  */
 package com.mycompany.full.sight.oshi;
 
-import oshi.PlatformEnum;
-import oshi.SystemInfo;
-import oshi.hardware.CentralProcessor;
-import oshi.hardware.GlobalMemory;
-import oshi.hardware.HardwareAbstractionLayer;
-import oshi.software.os.OperatingSystem;
-import oshi.util.FormatUtil;
+//Bibliotecas do OSHI
+import oshi.SystemInfo; //classe principal
+import oshi.software.os.OperatingSystem; //classe de SO
+import oshi.hardware.HardwareAbstractionLayer; //classe de hardware
+import oshi.hardware.CentralProcessor; //classe de hardware para ver dados da cpu
+import oshi.hardware.GlobalMemory; //classe de hardware para ver dados da RAM
+import oshi.PlatformEnum; //classe para ver nome do SO
+import oshi.util.FormatUtil; //classe para formatar valores para Bytes
+//Biblioteca para ver espaço do disco
 import java.io.File;
+//Biblioteca para ver uso da CPU
+import java.lang.management.ManagementFactory;
+import com.sun.management.OperatingSystemMXBean;
 
 public class MonitoramentoFS {
 
@@ -119,12 +124,26 @@ public class MonitoramentoFS {
         return mostrarQtdProcessos;
     }
 
+    public String verPorcentagemCpu() {
+
+        OperatingSystemMXBean osBean = ManagementFactory.getPlatformMXBean(
+                OperatingSystemMXBean.class);
+
+        Double porcentagem = osBean.getSystemCpuLoad() * 100;
+
+        String verPorcentagem = String.format("Uso atual da CPU: %.0f",
+                porcentagem);
+        
+        return verPorcentagem;
+
+    }
+
     //CÓDIGO DISCO
     public String verEspacoLivre() {
 
         long livre = new File("C:").getFreeSpace();
 
-        String mostrarEspacoLivre = String.format("Espaço livre: %s", livre 
+        String mostrarEspacoLivre = String.format("Espaço livre: %s", livre
                 / 1073741824 + " GB");
 
         return mostrarEspacoLivre;
@@ -134,9 +153,20 @@ public class MonitoramentoFS {
 
         long total = new File("C:").getTotalSpace();
 
-        String mostrarDisco = String.format("Espaço total: %s", total 
+        String mostrarDisco = String.format("Espaço total: %s", total
                 / 1073741824 + " GB");
 
         return mostrarDisco;
+    }
+
+    public String verEspacoUtilizado() {
+
+        long utilizado = new File("C:").getTotalSpace()
+                - new File("C:").getFreeSpace();
+
+        String mostrarUtilizado = String.format("Espaço utilizado: %s",
+                utilizado / 1073741824 + " GB");
+        
+        return mostrarUtilizado;
     }
 }

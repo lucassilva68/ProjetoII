@@ -20,6 +20,7 @@
     
     <dependencies>
         
+        <!-- Dependências do Oshi -->
         <!-- https://mvnrepository.com/artifact/com.github.oshi/oshi-core -->
         <dependency>
             <groupId>com.github.oshi</groupId>
@@ -34,6 +35,8 @@
             <version>4.0.0</version>
         </dependency>
         
+        
+        <!-- Dependências do JDBC Banco de dados -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -62,6 +65,14 @@
             <!-- ou versão 7.2.2.jre11, se sua JDK for a 11 -->
             <!-- ou versão que já existir na .m2 local -->
         </dependency>
-
+        
+        
+        <!-- Dependência necessário para Tela com Design -->
+        <dependency>
+            <groupId>unknown.binary</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>SNAPSHOT</version>
+        </dependency>
+        
     </dependencies>
 </project>
