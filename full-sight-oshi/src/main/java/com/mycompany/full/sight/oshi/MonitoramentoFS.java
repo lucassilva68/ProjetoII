@@ -18,6 +18,10 @@ import java.io.File;
 //Biblioteca para ver uso da CPU
 import java.lang.management.ManagementFactory;
 import com.sun.management.OperatingSystemMXBean;
+import java.util.Arrays;
+import java.util.List;
+import oshi.software.os.OSProcess;
+import oshi.software.os.OperatingSystem.ProcessSort;
 
 public class MonitoramentoFS {
 
@@ -133,9 +137,29 @@ public class MonitoramentoFS {
 
         String verPorcentagem = String.format("Uso atual da CPU: %.0f",
                 porcentagem);
-        
+
         return verPorcentagem;
 
+    }
+
+    public String printProcesses(OperatingSystem os, GlobalMemory memory) {
+
+        List<OSProcess> procs = Arrays.asList(os.getProcesses(50, ProcessSort.CPU));
+        String processos = "";
+        System.out.println("   PID  %CPU %MEM    Name");
+        for (int i = 0; i < procs.size() && i < 50; i++) {
+            OSProcess p = procs.get(i);
+            String listar = String.format(" %5d %5.1f %4.1f %s%n", p.getProcessID(),
+                    100d * (p.getKernelTime() + p.getUserTime()) / p.getUpTime(),
+                    100d * p.getResidentSetSize() / memory.getTotal(),
+                    p.getName());
+
+            for (OSProcess stringFinal : procs) {
+                processos += stringFinal.toString() + "\r\n";
+
+            }
+        }
+        return processos;
     }
 
     //CÓDIGO DISCO
@@ -166,7 +190,7 @@ public class MonitoramentoFS {
 
         String mostrarUtilizado = String.format("Espaço utilizado: %s",
                 utilizado / 1073741824 + " GB");
-        
+
         return mostrarUtilizado;
     }
 }
