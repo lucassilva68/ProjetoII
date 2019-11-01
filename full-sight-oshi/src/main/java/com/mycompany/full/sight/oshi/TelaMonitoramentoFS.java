@@ -34,7 +34,7 @@ public class TelaMonitoramentoFS extends javax.swing.JFrame {
          */
         lbMemoriaUtilizada.setText(tela.verMemoriaUsada(tela.hal.getMemory()));
 
-        lbMemoriaDisponivel.setText(tela.verMemoriaDisponivel(tela.hal.getMemory()));
+        lbMemoriaDisponivel.setText(tela.verMemoriaDisponivel(tela.hal.getMemory()).toString());
 
         lbMemoriaTotal.setText(tela.verMemoriaTotal(tela.hal.getMemory()));
         }
@@ -335,7 +335,49 @@ public class TelaMonitoramentoFS extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+=======
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbSO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(533, 533, 533))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbPortasLogicas1)
+                            .addComponent(lbFrequenciaCPU)
+                            .addComponent(lbThreads)
+                            .addComponent(lbPortasLogicas)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbPorcentagemCpu)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel1))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lbEspacoTotal)
+                            .addComponent(lbEspacoLivre)
+                            .addComponent(lbEspacoUtilizado)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(lbMemoriaDisponivel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbMemoriaUtilizada, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                            .addComponent(lbMemoriaTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(90, 90, 90))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(142, 142, 142)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(278, 278, 278)
+                        .addComponent(btExecutar)))
+                .addGap(0, 0, Short.MAX_VALUE))
+>>>>>>> 5d64a5e681c8bbf6e0625bda2c93afd8c9ac1aec
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

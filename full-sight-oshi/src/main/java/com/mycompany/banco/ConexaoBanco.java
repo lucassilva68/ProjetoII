@@ -21,9 +21,9 @@ public class ConexaoBanco {
         dataSource​.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
         // Create a variable for the connection string.
-        String connectionUrl = "jdbc:sqlserver://testejdbc.database.windows."
-                + "net:1433;databaseName=testejdbc;user=VGsP;"
-                + "password=#Gf43651961893";
+        String connectionUrl = "jdbc:sqlserver://srvgrupo4b.database.windows."
+                + "net:1433;databaseName=bdgrupo4;user=usergrupo4b;"
+                + "password=#Gfgrupo4b";
 
         dataSource​.setUrl(connectionUrl);
     }

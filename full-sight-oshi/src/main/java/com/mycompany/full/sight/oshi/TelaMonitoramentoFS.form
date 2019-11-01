@@ -197,12 +197,40 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
                           <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lbEspacoUtilizado2" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lbEspacoLivre2" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lbEspacoTotal2" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="89" max="32767" attributes="0"/>
+=======
+                          <Component id="lbPortasLogicas1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbFrequenciaCPU" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbThreads" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbPortasLogicas" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lbPorcentagemCpu" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jLabel2" alignment="0" min="-2" pref="34" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="224" max="32767" attributes="0"/>
+                      <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="lbEspacoTotal" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbEspacoLivre" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbEspacoUtilizado" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbMemoriaDisponivel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lbMemoriaUtilizada" alignment="0" pref="171" max="32767" attributes="0"/>
+                          <Component id="lbMemoriaTotal" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+>>>>>>> 5d64a5e681c8bbf6e0625bda2c93afd8c9ac1aec
                   </Group>
               </Group>
             </DimensionLayout>
