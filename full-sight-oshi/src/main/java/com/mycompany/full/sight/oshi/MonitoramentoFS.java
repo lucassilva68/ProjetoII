@@ -20,6 +20,7 @@ import java.lang.management.ManagementFactory;
 import com.sun.management.OperatingSystemMXBean;
 import java.util.Arrays;
 import java.util.List;
+import org.springframework.jdbc.core.PreparedStatementSetter;
 import oshi.software.os.OSProcess;
 import oshi.software.os.OperatingSystem.ProcessSort;
 
@@ -27,7 +28,7 @@ public class MonitoramentoFS {
 
     SystemInfo si = new SystemInfo();
     OperatingSystem os = si.getOperatingSystem();
-    HardwareAbstractionLayer hal = si.getHardware();
+    public HardwareAbstractionLayer hal = si.getHardware();
 
     public String verSO(PlatformEnum SO) {
 
@@ -53,15 +54,17 @@ public class MonitoramentoFS {
         return teste;
     }
      */
-    public String verMemoriaDisponivel(GlobalMemory memoria) {
+    public Integer verMemoriaDisponivel(GlobalMemory memoria) {
 
         long disponivel = memoria.getAvailable();
+        
+        Integer teste = Integer.valueOf((int)disponivel);
 
         String mostrarMemoria = String.format(
                 "Memória Disponível: %s",
-                FormatUtil.formatBytes(disponivel));
+                FormatUtil.formatBytes(teste));
 
-        return mostrarMemoria;
+        return teste;
     }
 
     public String verMemoriaUsada(GlobalMemory memoria) {
@@ -192,5 +195,9 @@ public class MonitoramentoFS {
                 utilizado / 1073741824 + " GB");
 
         return mostrarUtilizado;
+    }
+
+    public PreparedStatementSetter verMemoriaUsada(GlobalMemory memory, int i, int i0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

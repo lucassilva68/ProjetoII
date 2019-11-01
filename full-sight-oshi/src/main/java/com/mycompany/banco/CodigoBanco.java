@@ -7,6 +7,7 @@ package com.mycompany.banco;
 
 import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
+import com.mycompany.full.sight.oshi.MonitoramentoFS;
 
 /**
  *
@@ -15,13 +16,18 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class CodigoBanco {
 
     public static void main(String[] args) {
+        
+        MonitoramentoFS monitoramento = new MonitoramentoFS();
         ConexaoBanco conexaoBanco = new ConexaoBanco();
         JdbcTemplate jdbcTemplate = new JdbcTemplate(conexaoBanco.getDataSource());
 
         List lista = jdbcTemplate.queryForList(
-                "SELECT * from usuario");
+                "SELECT * from computadores");
 
         System.out.println("Consulta: " + lista);
+        
+        jdbcTemplate.update("insert into computadores (memoria,CPU,disco) "
+                + "values (?,?,?)",monitoramento.verMemoriaUsada(monitoramento.hal.getMemory(),2,3));
 
     }
 }

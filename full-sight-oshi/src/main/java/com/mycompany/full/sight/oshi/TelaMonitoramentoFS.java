@@ -34,7 +34,7 @@ public class TelaMonitoramentoFS extends javax.swing.JFrame {
          */
         lbMemoriaUtilizada.setText(tela.verMemoriaUsada(tela.hal.getMemory()));
 
-        lbMemoriaDisponivel.setText(tela.verMemoriaDisponivel(tela.hal.getMemory()));
+        lbMemoriaDisponivel.setText(tela.verMemoriaDisponivel(tela.hal.getMemory()).toString());
 
         lbMemoriaTotal.setText(tela.verMemoriaTotal(tela.hal.getMemory()));
         }
@@ -181,7 +181,7 @@ public class TelaMonitoramentoFS extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel1))
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -193,7 +193,7 @@ public class TelaMonitoramentoFS extends javax.swing.JFrame {
                             .addComponent(lbMemoriaDisponivel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lbMemoriaUtilizada, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
                             .addComponent(lbMemoriaTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(66, 66, 66))))
+                        .addGap(90, 90, 90))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
