@@ -28,7 +28,8 @@ public class TelaMonitFS extends javax.swing.JFrame {
 
         pbMemoriaDisponivel.setValue(tela.verMemoriaPb());
                  */
-                lbMemoriaUti.setText(tela.verMemoriaUsada(tela.hal.getMemory()));
+                tela.verMemoriaUsada();
+                lbMemoriaUti.setText(tela.verMemoriaUsada);
 
                 lbMemoriaDisponivel.setText(tela.verMemoriaDisponivel(tela.hal.getMemory()).toString());
 
@@ -40,11 +41,12 @@ public class TelaMonitFS extends javax.swing.JFrame {
     }
 
     void labelsCpu() {
-        t = new Timer(1000, new ActionListener() {
+        t = new Timer(800, new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                lbPorcentagem.setText(tela.verPorcentagemCpu());
+                tela.verPorcentagemCpu();
+                lbPorcentagem.setText(tela.verPorcentagem);
 
                 lbFrequenciaCpu.setText(tela.verUsoCPU(tela.hal.getProcessor()));
 
@@ -65,9 +67,10 @@ public class TelaMonitFS extends javax.swing.JFrame {
     }
 
     void labelsDisco() {
+        tela.verEspacoUtilizado();
         lbEspacoLivre.setText(tela.verEspacoLivre());
 
-        lbEspacoUti.setText(tela.verEspacoUtilizado());
+        lbEspacoUti.setText(tela.verDiscoUtilizado);
 
         lbEspacoTotal.setText(tela.verEspacoTotal());
     }
@@ -104,6 +107,7 @@ public class TelaMonitFS extends javax.swing.JFrame {
         lbPorcentagemCpu = new javax.swing.JLabel();
         lbPorcentagemCpu1 = new javax.swing.JLabel();
         lbPorcentagemCpu2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jpDisco = new javax.swing.JPanel();
         lbDisco = new javax.swing.JLabel();
         lbEspacoLivre = new javax.swing.JLabel();
@@ -124,7 +128,7 @@ public class TelaMonitFS extends javax.swing.JFrame {
         lbLogo.setBackground(new java.awt.Color(0, 0, 0));
         lbLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbLogo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Aluno\\Desktop\\ProjetoII\\full-sight-oshi\\src\\main\\java\\com\\mycompany\\autenticacao\\LogoEmpresa.png")); // NOI18N
-        jpTela.add(lbLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 190, 80));
+        jpTela.add(lbLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 190, 80));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -144,9 +148,6 @@ public class TelaMonitFS extends javax.swing.JFrame {
         jpRamLayout.setHorizontalGroup(
             jpRamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpRamLayout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jpRamLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpRamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbMemoriaDisponivel, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
@@ -154,14 +155,18 @@ public class TelaMonitFS extends javax.swing.JFrame {
                     .addGroup(jpRamLayout.createSequentialGroup()
                         .addComponent(lbMemoriaUti)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbMemoriaUtilizada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(lbMemoriaUtilizada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jpRamLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jpRamLayout.setVerticalGroup(
             jpRamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpRamLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpRamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbMemoriaUti)
                     .addComponent(lbMemoriaUtilizada, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -172,7 +177,7 @@ public class TelaMonitFS extends javax.swing.JFrame {
                 .addGap(0, 18, Short.MAX_VALUE))
         );
 
-        jpTela.add(jpRam, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 260, 110));
+        jpTela.add(jpRam, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 260, 110));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -193,6 +198,8 @@ public class TelaMonitFS extends javax.swing.JFrame {
         lbPortasLogicas.setForeground(new java.awt.Color(51, 51, 255));
         lbPortasLogicas.setText("Porta Lógicas:");
 
+        jLabel1.setText("%");
+
         javax.swing.GroupLayout jpCpuLayout = new javax.swing.GroupLayout(jpCpu);
         jpCpu.setLayout(jpCpuLayout);
         jpCpuLayout.setHorizontalGroup(
@@ -205,12 +212,14 @@ public class TelaMonitFS extends javax.swing.JFrame {
                     .addComponent(lbThreads, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbPortasLogicas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jpCpuLayout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jpCpuLayout.createSequentialGroup()
                         .addComponent(lbPorcentagem)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbPorcentagemCpu, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)))
+                        .addGap(2, 2, 2)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbPorcentagemCpu, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
+                    .addGroup(jpCpuLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jpCpuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jpCpuLayout.createSequentialGroup()
@@ -231,7 +240,9 @@ public class TelaMonitFS extends javax.swing.JFrame {
                 .addComponent(lbSO)
                 .addGap(9, 9, 9)
                 .addGroup(jpCpuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbPorcentagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jpCpuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbPorcentagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1))
                     .addComponent(lbPorcentagemCpu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbFrequenciaCpu)
@@ -239,7 +250,7 @@ public class TelaMonitFS extends javax.swing.JFrame {
                 .addComponent(lbThreads)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbPortasLogicas)
-                .addGap(0, 40, Short.MAX_VALUE))
+                .addGap(0, 26, Short.MAX_VALUE))
             .addGroup(jpCpuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jpCpuLayout.createSequentialGroup()
                     .addGap(61, 61, 61)
@@ -252,7 +263,7 @@ public class TelaMonitFS extends javax.swing.JFrame {
                     .addGap(85, 85, 85)))
         );
 
-        jpTela.add(jpCpu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 170));
+        jpTela.add(jpCpu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 260, 140));
 
         lbDisco.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbDisco.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -288,8 +299,9 @@ public class TelaMonitFS extends javax.swing.JFrame {
         jpDiscoLayout.setVerticalGroup(
             jpDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpDiscoLayout.createSequentialGroup()
+                .addGap(7, 7, 7)
                 .addComponent(lbDisco)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbEspacoLivre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpDiscoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -297,10 +309,10 @@ public class TelaMonitFS extends javax.swing.JFrame {
                     .addComponent(lbEspacoUtilizado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbEspacoTotal)
-                .addGap(0, 56, Short.MAX_VALUE))
+                .addGap(0, 26, Short.MAX_VALUE))
         );
 
-        jpTela.add(jpDisco, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 260, 150));
+        jpTela.add(jpDisco, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 260, 120));
 
         btnExecutar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnExecutar.setForeground(new java.awt.Color(0, 0, 255));
@@ -320,31 +332,31 @@ public class TelaMonitFS extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(114, 114, 114)
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(121, 121, 121)
                 .addComponent(btnExecutar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnExecutar))
         );
 
-        jpTela.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 330, 340));
+        jpTela.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 330, 320));
 
         lbPortasLogicas2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbPortasLogicas2.setText("Quantidade de Processos:");
-        jpTela.add(lbPortasLogicas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 160, -1));
+        jpTela.add(lbPortasLogicas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 310, -1));
 
         lbPortaLogicas1.setForeground(new java.awt.Color(0, 0, 255));
-        jpTela.add(lbPortaLogicas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 160, 20));
+        jpTela.add(lbPortaLogicas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 150, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -354,9 +366,7 @@ public class TelaMonitFS extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jpTela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1, Short.MAX_VALUE))
+            .addComponent(jpTela, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
         );
 
         pack();
@@ -405,6 +415,7 @@ public class TelaMonitFS extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExecutar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel5;

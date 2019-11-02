@@ -29,6 +29,10 @@ public class MonitoramentoFS {
     SystemInfo si = new SystemInfo();
     OperatingSystem os = si.getOperatingSystem();
     public HardwareAbstractionLayer hal = si.getHardware();
+    
+    String verMemoriaUsada;
+    String verPorcentagem;
+    String verDiscoUtilizado;
 
     public String verSO(PlatformEnum SO) {
 
@@ -54,27 +58,28 @@ public class MonitoramentoFS {
         return teste;
     }
      */
-    public Integer verMemoriaDisponivel(GlobalMemory memoria) {
+    public String verMemoriaDisponivel(GlobalMemory memoria) {
 
         long disponivel = memoria.getAvailable();
-        
-        Integer teste = Integer.valueOf((int)disponivel);
 
         String mostrarMemoria = String.format(
                 "Memória Disponível: %s",
-                FormatUtil.formatBytes(teste));
+                FormatUtil.formatBytes(disponivel));
 
-        return teste;
+        return mostrarMemoria;
     }
 
-    public String verMemoriaUsada(GlobalMemory memoria) {
+    public Integer verMemoriaUsada() {
 
-        long memoriaUsada = memoria.getTotal() - memoria.getAvailable();
+        long memoriaUsada = hal.getMemory().getTotal()
+                - hal.getMemory().getAvailable();
 
-        String mostrarMemoriaUsada = String.format("Memória Utilizada: %s",
+        Integer usada = (int) memoriaUsada;
+        
+        verMemoriaUsada = String.format("Memória usada: %s",
                 FormatUtil.formatBytes(memoriaUsada));
 
-        return mostrarMemoriaUsada;
+        return usada;
     }
 
     public String verMemoriaTotal(GlobalMemory memoria) {
@@ -131,17 +136,19 @@ public class MonitoramentoFS {
         return mostrarQtdProcessos;
     }
 
-    public String verPorcentagemCpu() {
+    public Integer verPorcentagemCpu() {
 
         OperatingSystemMXBean osBean = ManagementFactory.getPlatformMXBean(
                 OperatingSystemMXBean.class);
 
         Double porcentagem = osBean.getSystemCpuLoad() * 100;
+        
+        Integer verUsoPorcentagem = porcentagem.intValue();
 
-        String verPorcentagem = String.format("Uso atual da CPU: %.0f",
+        verPorcentagem = String.format("Uso atual da CPU: %.0f",
                 porcentagem);
 
-        return verPorcentagem;
+        return verUsoPorcentagem;
 
     }
 
@@ -149,7 +156,6 @@ public class MonitoramentoFS {
 
         List<OSProcess> procs = Arrays.asList(os.getProcesses(50, ProcessSort.CPU));
         String processos = "";
-        System.out.println("   PID  %CPU %MEM    Name");
         for (int i = 0; i < procs.size() && i < 50; i++) {
             OSProcess p = procs.get(i);
             String listar = String.format(" %5d %5.1f %4.1f %s%n", p.getProcessID(),
@@ -186,15 +192,17 @@ public class MonitoramentoFS {
         return mostrarDisco;
     }
 
-    public String verEspacoUtilizado() {
+    public Integer verEspacoUtilizado() {
 
         long utilizado = new File("C:").getTotalSpace()
                 - new File("C:").getFreeSpace();
 
-        String mostrarUtilizado = String.format("Espaço utilizado: %s",
+        Integer verUtilizado = (int)utilizado;
+        
+        verDiscoUtilizado = String.format("Espaço utilizado: %s",
                 utilizado / 1073741824 + " GB");
 
-        return mostrarUtilizado;
+        return verUtilizado;
     }
 
     public PreparedStatementSetter verMemoriaUsada(GlobalMemory memory, int i, int i0) {

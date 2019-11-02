@@ -16,18 +16,20 @@ import com.mycompany.full.sight.oshi.MonitoramentoFS;
 public class CodigoBanco {
 
     public static void main(String[] args) {
-        
+
         MonitoramentoFS monitoramento = new MonitoramentoFS();
         ConexaoBanco conexaoBanco = new ConexaoBanco();
         JdbcTemplate jdbcTemplate = new JdbcTemplate(conexaoBanco.getDataSource());
+
+        jdbcTemplate.update("insert into computadores (memoria,CPU,disco) "
+                + "values (?,?,?)", monitoramento.verMemoriaUsada(),
+                monitoramento.verPorcentagemCpu(),
+                monitoramento.verEspacoUtilizado());
 
         List lista = jdbcTemplate.queryForList(
                 "SELECT * from computadores");
 
         System.out.println("Consulta: " + lista);
-        
-        jdbcTemplate.update("insert into computadores (memoria,CPU,disco) "
-                + "values (?,?,?)",monitoramento.verMemoriaUsada(monitoramento.hal.getMemory(),2,3));
 
     }
 }
